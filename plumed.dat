@@ -1,0 +1,8 @@
+# load reference structure and select protein residues
+MOLINFO STRUCTURE=plumed_ref.pdb 
+WHOLEMOLECULES ENTITY0=1-1565 
+hh: ANTIBETARMSD RESIDUES=1-175 TYPE=OPTIMAL R_0=0.08 STRANDS_CUTOFF=1 
+# add lower wall restraint on antibetarmsd
+lwall: LOWER_WALLS ARG=hh AT=35.0 KAPPA=150.0
+# print collected variable
+PRINT ARG=hh FILE=COLVAR STRIDE=1
